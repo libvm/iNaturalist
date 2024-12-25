@@ -1,96 +1,15 @@
 stages:
-  download:
-    cmd: python src/download_data.py
-    deps:
-      - src/download_data.py
-    outs:
-      - images/foxes
-      - images/raccoons
-      - images/weasels
-      - images/skunks
-      - images/hyenas
-      - images/mongooses
-      - images/cats
-      - images/wolves
-
-  prepare:
-    cmd: python src/prepare_data.py
-    deps:
-      - src/prepare_data.py
-      - images/foxes
-      - images/raccoons
-      - images/weasels
-      - images/skunks
-      - images/hyenas
-      - images/mongooses
-      - images/cats
-      - images/wolves
-    outs:
-      - data_split/train/foxes
-      - data_split/train/raccoons
-      - data_split/train/weasels
-      - data_split/train/skunks
-      - data_split/train/hyenas
-      - data_split/train/mongooses
-      - data_split/train/cats
-      - data_split/train/wolves
-
-      - data_split/val/foxes
-      - data_split/val/raccoons
-      - data_split/val/weasels
-      - data_split/val/skunks
-      - data_split/val/hyenas
-      - data_split/val/mongooses
-      - data_split/val/cats
-      - data_split/val/wolves
-
-      - data_split/test/foxes
-      - data_split/test/raccoons
-      - data_split/test/weasels
-      - data_split/test/skunks
-      - data_split/test/hyenas
-      - data_split/test/mongooses
-      - data_split/test/cats
-      - data_split/test/wolves
-
-  train:
-    cmd: python src/train.py
-    deps:
-      - src/train.py
-
-      - data_split/train/foxes
-      - data_split/train/raccoons
-      - data_split/train/weasels
-      - data_split/train/skunks
-      - data_split/train/hyenas
-      - data_split/train/mongooses
-      - data_split/train/cats
-      - data_split/train/wolves
-
-      - data_split/val/foxes
-      - data_split/val/raccoons
-      - data_split/val/weasels
-      - data_split/val/skunks
-      - data_split/val/hyenas
-      - data_split/val/mongooses
-      - data_split/val/cats
-      - data_split/val/wolves
-    params:
-      - train
-    outs:
-      - models/model.pth
-
   evaluate:
     cmd: python src/evaluate.py
     deps:
-      - src/evaluate.py
-      - models/model.pth
+    - src/evaluate.py
+    - models/model.pth
 
-      - data_split/test/foxes
-      - data_split/test/raccoons
-      - data_split/test/weasels
-      - data_split/test/skunks
-      - data_split/test/hyenas
-      - data_split/test/mongooses
-      - data_split/test/cats
-      - data_split/test/wolves
+    - data_split/test/foxes
+    - data_split/test/raccoons
+    - data_split/test/weasels
+    - data_split/test/skunks
+    - data_split/test/hyenas
+    - data_split/test/mongooses
+    - data_split/test/cats
+    - data_split/test/wolves
