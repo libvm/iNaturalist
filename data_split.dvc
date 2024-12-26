@@ -1,6 +1,6 @@
 outs:
-- md5: 86f78393bbf4f56a74fd43d8ab3141c7.dir
-  size: 287906174
-  nfiles: 6724
+- md5: 6d3f21b0477af3fab3f0331f9cb5aa6f.dir
+  size: 287857873
+  nfiles: 6723
   hash: md5
   path: data_split
